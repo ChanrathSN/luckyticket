@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lucky Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            font-size: 18px;
+            background: #2a8cff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Lucky Ticket</h2>
+
+    <div class="input-group">
+        <label>Customer Name:</label>
+        <input id="customer" placeholder="Enter customer name">
+    </div>
+
+    <div class="input-group">
+        <label>Sale Name:</label>
+        <input id="sale" placeholder="Enter sale name">
+    </div>
+
+    <button onclick="submitData()">Submit</button>
+</div>
+
+<script>
+function submitData() {
+    let customer = document.getElementById("customer").value;
+    let sale = document.getElementById("sale").value;
+
+    Telegram.WebApp.sendData(JSON.stringify({
+        customer_name: customer,
+        sale_name: sale
+    }));
+}
+</script>
+
+</body>
+</html>
